@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{51F3DC33-7E69-4406-9495-045790E8DB48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SalesReturnDAL</RootNamespace>
+    <AssemblyName>SalesReturnDAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Phoenix\Downloads\System.Transactions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\AdminMasterDAL.cs" />
+    <Compile Include="DAL\ApprovalMatrixDAL.cs" />
+    <Compile Include="DAL\ApprovedRequestDAL.cs" />
+    <Compile Include="DAL\ApproverDAL.cs" />
+    <Compile Include="DAL\Closed.cs" />
+    <Compile Include="DAL\CommonDAL.cs" />
+    <Compile Include="DAL\DashboardDAL.cs" />
+    <Compile Include="DAL\Decrypt.cs" />
+    <Compile Include="DAL\Email.cs" />
+    <Compile Include="DAL\InprocessRequestDAL.cs" />
+    <Compile Include="DAL\PendingRequestDAL.cs" />
+    <Compile Include="DAL\ReasonMasterDAL.cs" />
+    <Compile Include="DAL\RejectedRequestDAL.cs" />
+    <Compile Include="DAL\RequestDal.cs" />
+    <Compile Include="DAL\RequestTypeMasterDAL.cs" />
+    <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="DBContext\SalesRetunEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesRetunEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SalesRetunEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SalesRetunEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesRetunEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SalesRetunEntity1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesRetunEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\spGetCCStackHolderDetail_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\spGetMasterReportData_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\spGetShelfLifecount_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\spGetShelfLifeData_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\sp_CheckEPNumber_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\sp_CheckIfDepotPerson_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_Find_if_ExistIn_EmployeeMsater_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetApprovedRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetBatchNoData_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetBatchNo_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\sp_GetBUList_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetCCNumber_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetClosedRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetCountry_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetCurrentStatusDetails_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\sp_GetDealerDtlBy_DealerRepositoryId_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetDealerList_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetDepotBasedOnEmpCode_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetDepotList1_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetDepotList_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetEmployeeDetailsForRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetEmployeeForBU_Division_Country_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetFutureStatusDetails_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetInprocessRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetInvoiceDetailList_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetOpenRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetPendingRequestForDepot_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetPendingRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetPendingSRVClosureRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetRejectedRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetRequestDetail_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetRequestStatusDetails_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetSavedAsDraftRequestIds_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetSavedRequests_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetSKUCode_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_GetTotalRequest_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\sp_GetuserDetailsFromLFG_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_Get_Division_For_BU_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_LFGDetailsBasedOnName_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\SP_LFGDetails_Result.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblAdminMaster.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblApprovalMatrix.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblApproverDetail.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblApproverHeader.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblBarCodeDetail.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblEmployeeMaster.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblFlowMatrix.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblFutureStatu.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblMailTemplate.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblReasonMaster.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\tblRequestDtl.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblRequestHeader.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblRequestType.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblRoleMaster.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblSalesReasonMaster.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblSAPReasonMaster.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblSAPSMaster.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblStatu.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\TblUploadedInvoice.cs">
+      <DependentUpon>SalesRetunEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SalesReturnBLL\SalesReturnBLL.csproj">
+      <Project>{ea132d67-2bdd-445c-b836-6aa3704d147a}</Project>
+      <Name>SalesReturnBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DBContext\SalesRetunEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SalesRetunEntity1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="DBContext\SalesRetunEntity.edmx.diagram">
+      <DependentUpon>SalesRetunEntity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DBContext\SalesRetunEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SalesRetunEntity.Context.cs</LastGenOutput>
+      <DependentUpon>SalesRetunEntity.edmx</DependentUpon>
+    </Content>
+    <Content Include="DBContext\SalesRetunEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SalesRetunEntity.edmx</DependentUpon>
+      <LastGenOutput>SalesRetunEntity.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

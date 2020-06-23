@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2d0d5064688847cea1a28459f48d584a" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="SalesReturndbModel.TblRequestType" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblApprovalMatrix" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblReasonMaster" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblUploadedInvoice" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblApproverDetail" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblApproverHeader" Width="1.5" PointX="9.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblFutureStatu" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblRoleMaster" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblAdminMaster" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblSalesReasonMaster" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblStatu" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblFlowMatrix" Width="1.5" PointX="11.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblMailTemplate" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblSAPReasonMaster" Width="1.5" PointX="13.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblSAPSMaster" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblEmployeeMaster" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblBarCodeDetail" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.TblRequestHeader" Width="1.5" PointX="13.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SalesReturndbModel.tblRequestDtl" Width="1.5" PointX="7.375" PointY="13.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

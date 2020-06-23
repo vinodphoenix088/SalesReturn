@@ -1,0 +1,1261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="SalesReturndbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+        <EntityType Name="TblAdminMaster">
+          <Key>
+            <PropertyRef Name="Admin_Id" />
+          </Key>
+          <Property Name="Admin_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="EmployeeCode" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="ModifiedBy" MaxLength="100" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="TblApprovalMatrix">
+          <Key>
+            <PropertyRef Name="Matrix_Id" />
+          </Key>
+          <Property Name="Matrix_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Country" MaxLength="100" Type="nvarchar" />
+          <Property Name="BUType" MaxLength="100" Type="nvarchar" />
+          <Property Name="Division" MaxLength="100" Type="nvarchar" />
+          <Property Name="RequestType" Nullable="false" Type="int" />
+          <Property Name="SRV_Value" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="InvoiceAge" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="ComplaintHandler" MaxLength="100" Type="nvarchar" />
+          <Property Name="ComplaintManager" MaxLength="100" Type="nvarchar" />
+          <Property Name="LogisticsManager" MaxLength="100" Type="nvarchar" />
+          <Property Name="LogisticsHead" MaxLength="100" Type="nvarchar" />
+          <Property Name="SegmentHeadHRV" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="SegmentInvoiceAge" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="VP" MaxLength="100" Type="nvarchar" />
+          <Property Name="President" MaxLength="100" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblApproverDetail">
+          <Key>
+            <PropertyRef Name="ApproverDetails_Id" />
+          </Key>
+          <Property Name="ApproverDetails_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="bigint" />
+          <Property Name="Approver_Id" Nullable="false" Type="int" />
+          <Property Name="Role_Id" Nullable="false" Type="int" />
+          <Property Name="Status_Id" Nullable="false" Type="int" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="AssignedTo" Nullable="false" MaxLength="120" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="ModifiedBy" MaxLength="20" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="TblApproverHeader">
+          <Key>
+            <PropertyRef Name="Approver_Id" />
+          </Key>
+          <Property Name="Approver_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Request_Id" Nullable="false" Type="int" />
+          <Property Name="Active_Role" Type="int" />
+          <Property Name="AssignedTo" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="Status_Id" Nullable="false" Type="int" />
+          <Property Name="Requested_Role" Type="int" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="smalldatetime" />
+          <Property Name="ModifiedDate" Type="smalldatetime" />
+          <Property Name="CreatedBy" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="ModifiedBy" MaxLength="20" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="TblFutureStatus">
+          <Key>
+            <PropertyRef Name="FutStatus_ID" />
+          </Key>
+          <Property Name="FutStatus_ID" Nullable="false" StoreGeneratedPattern="Identity" Type="bigint" />
+          <Property Name="Request_ID" Nullable="false" Type="bigint" />
+          <Property Name="Role" Type="bigint" />
+          <Property Name="Status" Nullable="false" Type="bigint" />
+          <Property Name="EmployeeCode" MaxLength="20" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="ModifiedBy" MaxLength="20" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="TblReasonMaster">
+          <Key>
+            <PropertyRef Name="ReasonMaster_Id" />
+          </Key>
+          <Property Name="ReasonMaster_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Reason" Nullable="false" MaxLength="500" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+          <Property Name="SubReason" MaxLength="100" Type="varchar" />
+        </EntityType>
+        <EntityType Name="tblRequestDtl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="bigint" />
+          <Property Name="RequestHeaderId" Nullable="false" Type="bigint" />
+          <Property Name="InvoiceNumber" MaxLength="100" Type="nvarchar" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="ReadyToProvideGST" Type="bit" />
+          <Property Name="InvoiceUpload" MaxLength="50" Type="nvarchar" />
+          <Property Name="SKUName" MaxLength="100" Type="nvarchar" />
+          <Property Name="SKUCode" MaxLength="100" Type="nvarchar" />
+          <Property Name="BatchNo" MaxLength="50" Type="nvarchar" />
+          <Property Name="InvoiceQuantity" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="SRVQuantity" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="Unit" MaxLength="30" Type="nvarchar" />
+          <Property Name="PackSize" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="Volume" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="SRVValue" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="CCNo" Type="int" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblRequestHeader">
+          <Key>
+            <PropertyRef Name="RequestHeaderId" />
+          </Key>
+          <Property Name="RequestHeaderId" Nullable="false" StoreGeneratedPattern="Identity" Type="bigint" />
+          <Property Name="EmployeeCode" Type="nvarchar(max)" />
+          <Property Name="DepotId" Type="bigint" />
+          <Property Name="DealerId" Type="bigint" />
+          <Property Name="ReasonForReturn" Type="int" />
+          <Property Name="SKUCode" MaxLength="100" Type="nvarchar" />
+          <Property Name="SKUName" MaxLength="100" Type="nvarchar" />
+          <Property Name="BatchNo" MaxLength="50" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblRequestType">
+          <Key>
+            <PropertyRef Name="RequestType_Id" />
+          </Key>
+          <Property Name="RequestType_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="RequestType" Nullable="false" MaxLength="500" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblRoleMaster">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="RoleName" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" Type="bigint" />
+          <Property Name="ModifiedBy" Type="bigint" />
+        </EntityType>
+        <EntityType Name="TblSalesReasonMaster">
+          <Key>
+            <PropertyRef Name="SalesReason_Id" />
+          </Key>
+          <Property Name="SalesReason_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="RequestTypeId" Nullable="false" Type="int" />
+          <Property Name="SubReason" MaxLength="100" Type="varchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedDate" Nullable="false" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Nullable="false" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblStatus">
+          <Key>
+            <PropertyRef Name="Status_Id" />
+          </Key>
+          <Property Name="Status_Id" Nullable="false" StoreGeneratedPattern="Identity" Type="bigint" />
+          <Property Name="Status" Nullable="false" MaxLength="50" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="TblUploadedInvoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" StoreGeneratedPattern="Identity" Type="bigint" />
+          <Property Name="RequestDetail_Id" Type="bigint" />
+          <Property Name="ImageUploaded" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="ModifiedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <Function Name="SP_Get_Division_For_BU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BU" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Get_Segment_For_BU_And_Division" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BU" Type="nvarchar" Mode="In" />
+          <Parameter Name="Division" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetApprovedRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_GetBUList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetCCNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CC_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GetCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GetCurrentStatusDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RequestId" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_GetDealerList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Depot_Id" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_GetDepotList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GetEmployeeDetailsForRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RequestID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_GetEmployeeForBU_Division_Country" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BUName" Type="nvarchar" Mode="In" />
+          <Parameter Name="DivisionName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Country" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetFutureStatusDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RequestID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_GetInprocessRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetPendingRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetRejectedRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetRequestDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Request_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GetRequestStatusDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RequestID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_GetSavedAsDraftRequest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EmpCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Depot_Id" Type="int" Mode="In" />
+          <Parameter Name="Dealer_Id" Type="int" Mode="In" />
+          <Parameter Name="Reason_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GetSKUCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SKUCode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_LFGDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMP_CODE" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SalesReturndbModelStoreContainer">
+          <EntitySet Name="TblAdminMaster" EntityType="Self.TblAdminMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblApprovalMatrix" EntityType="Self.TblApprovalMatrix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblApproverDetail" EntityType="Self.TblApproverDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblApproverHeader" EntityType="Self.TblApproverHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblFutureStatus" EntityType="Self.TblFutureStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblReasonMaster" EntityType="Self.TblReasonMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRequestDtl" EntityType="Self.tblRequestDtl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblRequestHeader" EntityType="Self.TblRequestHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblRequestType" EntityType="Self.TblRequestType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblRoleMaster" EntityType="Self.TblRoleMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSalesReasonMaster" EntityType="Self.TblSalesReasonMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblStatus" EntityType="Self.TblStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblUploadedInvoice" EntityType="Self.TblUploadedInvoice" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalesReturndbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SalesReturndbEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="SP_GetCountry" ReturnType="Collection(SalesReturndbModel.SP_GetCountry_Result)" />
+          <EntitySet Name="TblRequestTypes" EntityType="SalesReturndbModel.TblRequestType" />
+          <FunctionImport Name="SP_Get_Division_For_BU" ReturnType="Collection(SalesReturndbModel.SP_Get_Division_For_BU_Result)">
+          <Parameter Name="BU" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetBUList" ReturnType="Collection(SalesReturndbModel.sp_GetBUList_Result)">
+          <Parameter Name="Country" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LFGDetails" ReturnType="Collection(SalesReturndbModel.SP_LFGDetails_Result)">
+          <Parameter Name="EMP_CODE" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetEmployeeForBU_Division_Country" ReturnType="Collection(SalesReturndbModel.SP_GetEmployeeForBU_Division_Country_Result)">
+            <Parameter Name="BUName" Type="String" Mode="In" />
+            <Parameter Name="DivisionName" Type="String" Mode="In" />
+            <Parameter Name="Country" Type="String" Mode="In" />
+          </FunctionImport>
+          <EntitySet Name="TblApprovalMatrices" EntityType="SalesReturndbModel.TblApprovalMatrix" />
+          <EntitySet Name="TblReasonMasters" EntityType="SalesReturndbModel.TblReasonMaster" />
+          <FunctionImport Name="SP_GetDepotList" ReturnType="Collection(SalesReturndbModel.SP_GetDepotList_Result)" />
+          <FunctionImport Name="SP_GetDealerList" ReturnType="Collection(SalesReturndbModel.SP_GetDealerList_Result)">
+          <Parameter Name="Depot_Id" Type="Int64" Mode="In" />
+          </FunctionImport>
+          <EntitySet Name="TblUploadedInvoices" EntityType="SalesReturndbModel.TblUploadedInvoice" />
+          <EntitySet Name="TblRequestHeaders" EntityType="SalesReturndbModel.TblRequestHeader" />
+          <EntitySet Name="TblApproverDetails" EntityType="SalesReturndbModel.TblApproverDetail" />
+          <EntitySet Name="TblApproverHeaders" EntityType="SalesReturndbModel.TblApproverHeader" />
+          <EntitySet Name="TblFutureStatus" EntityType="SalesReturndbModel.TblFutureStatu" />
+          <EntitySet Name="TblRoleMasters" EntityType="SalesReturndbModel.TblRoleMaster" />
+          <FunctionImport Name="SP_Get_Segment_For_BU_And_Division" ReturnType="Collection(String)">
+            <Parameter Name="BU" Type="String" Mode="In" />
+            <Parameter Name="Division" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetPendingRequest" ReturnType="Collection(SalesReturndbModel.SP_GetPendingRequest_Result)">
+          <Parameter Name="EmpCode" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetEmployeeDetailsForRequest" ReturnType="Collection(SalesReturndbModel.SP_GetEmployeeDetailsForRequest_Result)">
+          <Parameter Name="RequestID" Type="Int64" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetFutureStatusDetails" ReturnType="Collection(SalesReturndbModel.SP_GetFutureStatusDetails_Result)">
+          <Parameter Name="RequestID" Type="Int64" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetRequestStatusDetails" ReturnType="Collection(SalesReturndbModel.SP_GetRequestStatusDetails_Result)">
+          <Parameter Name="RequestID" Type="Int64" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetCurrentStatusDetails" ReturnType="Collection(SalesReturndbModel.SP_GetCurrentStatusDetails_Result)">
+          <Parameter Name="RequestId" Type="Int64" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetRequestDetail" ReturnType="Collection(SalesReturndbModel.SP_GetRequestDetail_Result)">
+          <Parameter Name="Request_Id" Type="Int32" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetCCNumber" ReturnType="Collection(SalesReturndbModel.SP_GetCCNumber_Result)">
+          <Parameter Name="CC_Id" Type="Int32" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetRejectedRequest" ReturnType="Collection(SalesReturndbModel.SP_GetRejectedRequest_Result)">
+          <Parameter Name="EmpCode" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetInprocessRequest" ReturnType="Collection(SalesReturndbModel.SP_GetInprocessRequest_Result)">
+          <Parameter Name="EmpCode" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetApprovedRequest" ReturnType="Collection(SalesReturndbModel.SP_GetApprovedRequest_Result)">
+          <Parameter Name="EmpCode" Type="String" Mode="In" />
+          </FunctionImport>
+          <EntitySet Name="TblAdminMasters" EntityType="SalesReturndbModel.TblAdminMaster" />
+          <FunctionImport Name="SP_GetSKUCode" ReturnType="Collection(SalesReturndbModel.SP_GetSKUCode_Result)">
+          <Parameter Name="SKUCode" Type="String" Mode="In" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetSavedAsDraftRequest" ReturnType="Collection(Int32)">
+            <Parameter Name="EmpCode" Type="String" Mode="In" />
+            <Parameter Name="Depot_Id" Type="Int32" Mode="In" />
+            <Parameter Name="Dealer_Id" Type="Int32" Mode="In" />
+            <Parameter Name="Reason_Id" Type="Int32" Mode="In" />
+          </FunctionImport>
+          <EntitySet Name="tblRequestDtls" EntityType="SalesReturndbModel.tblRequestDtl" />
+          <EntitySet Name="TblSalesReasonMasters" EntityType="SalesReturndbModel.TblSalesReasonMaster" />
+          <EntitySet Name="TblStatus" EntityType="SalesReturndbModel.TblStatu" />
+        </EntityContainer>
+        <ComplexType Name="SP_GetCountry_Result">
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <EntityType Name="TblRequestType">
+          <Key>
+            <PropertyRef Name="RequestType_Id" />
+          </Key>
+          <Property Name="RequestType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestType" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="SP_Get_Division_For_BU_Result">
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_GetBUList_Result">
+          <Property Type="String" Name="SBU_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_LFGDetails_Result">
+          <Property Type="String" Name="EMP_CODE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emp_First_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Desg_Desc" Nullable="true" />
+          <Property Type="String" Name="email_id" Nullable="false" MaxLength="22" />
+          <Property Type="String" Name="Mobile_no" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Zone" Nullable="true" />
+          <Property Type="String" Name="SBU_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Seg_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="President_Code" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Regional_Head" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Country_Head" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="segmentHead" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="VPHead" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DivHead" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="SP_GetEmployeeForBU_Division_Country_Result">
+          <Property Type="String" Name="EMP_CODE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emp_First_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="email_id" Nullable="false" MaxLength="22" />
+          <Property Type="String" Name="Mobile_no" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <EntityType Name="TblApprovalMatrix">
+          <Key>
+            <PropertyRef Name="Matrix_Id" />
+          </Key>
+          <Property Name="Matrix_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BUType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RequestType" Type="Int32" Nullable="false" />
+          <Property Name="SRV_Value" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="InvoiceAge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ComplaintHandler" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ComplaintManager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LogisticsManager" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LogisticsHead" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SegmentHeadHRV" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SegmentInvoiceAge" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="President" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblReasonMaster">
+          <Key>
+            <PropertyRef Name="ReasonMaster_Id" />
+          </Key>
+          <Property Name="ReasonMaster_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="SP_GetDepotList_Result">
+          <Property Type="String" Name="DepotAddress" Nullable="true" />
+          <Property Type="String" Name="DepotCode" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DepotName" Nullable="true" MaxLength="250" />
+          <Property Type="Int64" Name="DepotId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_GetDealerList_Result">
+          <Property Type="String" Name="DealerAddress" Nullable="true" />
+          <Property Type="String" Name="DealerCode" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="DealerId" Nullable="false" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="150" />
+        </ComplexType>
+        <EntityType Name="TblUploadedInvoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestDetail_Id" Type="Int64" />
+          <Property Name="ImageUploaded" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblRequestHeader">
+          <Key>
+            <PropertyRef Name="RequestHeaderId" />
+          </Key>
+          <Property Name="RequestHeaderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DepotId" Type="Int64" />
+          <Property Name="DealerId" Type="Int64" />
+          <Property Name="ReasonForReturn" Type="Int32" />
+          <Property Name="SKUCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SKUName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblApproverDetail">
+          <Key>
+            <PropertyRef Name="ApproverDetails_Id" />
+          </Key>
+          <Property Name="ApproverDetails_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Approver_Id" Type="Int32" Nullable="false" />
+          <Property Name="Role_Id" Type="Int32" Nullable="false" />
+          <Property Name="Status_Id" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AssignedTo" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblApproverHeader">
+          <Key>
+            <PropertyRef Name="Approver_Id" />
+          </Key>
+          <Property Name="Approver_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Request_Id" Type="Int32" Nullable="false" />
+          <Property Name="Active_Role" Type="Int32" />
+          <Property Name="AssignedTo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Status_Id" Type="Int32" Nullable="false" />
+          <Property Name="Requested_Role" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblFutureStatu">
+          <Key>
+            <PropertyRef Name="FutStatus_ID" />
+          </Key>
+          <Property Name="FutStatus_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Request_ID" Type="Int64" Nullable="false" />
+          <Property Name="Role" Type="Int64" />
+          <Property Name="Status" Type="Int64" Nullable="false" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblRoleMaster">
+          <Key>
+            <PropertyRef Name="Role_Id" />
+          </Key>
+          <Property Name="Role_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Int64" />
+        </EntityType>
+        <ComplexType Name="SP_GetPendingRequest_Result">
+          <Property Type="Int64" Name="RequestHeaderId" Nullable="false" />
+          <Property Type="Int64" Name="DealerId" Nullable="true" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DealerCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DealerAddress" Nullable="true" />
+          <Property Type="Int64" Name="DepotId" Nullable="true" />
+          <Property Type="String" Name="DepotName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DepotCode" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DepotAddress" Nullable="true" />
+          <Property Type="String" Name="SKUCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SKUName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BatchNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FutureStatus" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="FutureStatus_Id" Nullable="false" />
+          <Property Type="Int32" Name="CurrentStatus_Id" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GetEmployeeDetailsForRequest_Result">
+          <Property Type="Int64" Name="RequestHeaderId" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="String" Name="EMP_CODE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emp_First_name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Dept_name" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Seg_Name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_GetFutureStatusDetails_Result">
+          <Property Type="Int64" Name="Request_ID" Nullable="false" />
+          <Property Type="String" Name="EmployeeCode" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Remark" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="EMP_CODE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Emp_First_name" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_GetRequestStatusDetails_Result">
+          <Property Type="Int64" Name="RequestHeaderId" Nullable="false" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Remark" Nullable="true" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="EMP_CODE" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Emp_First_name" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="SP_GetCurrentStatusDetails_Result">
+          <Property Type="Int64" Name="RequestHeaderId" Nullable="false" />
+          <Property Type="String" Name="Department" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Status" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Remark" Nullable="true" />
+          <Property Type="String" Name="AssignedTo" Nullable="false" MaxLength="120" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="EMP_CODE" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Emp_First_name" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="SP_GetRequestDetail_Result">
+          <Property Type="Int64" Name="RequestHeaderId" Nullable="false" />
+          <Property Type="Int64" Name="DealerId" Nullable="true" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DealerCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DealerAddress" Nullable="true" />
+          <Property Type="Int64" Name="DepotId" Nullable="true" />
+          <Property Type="String" Name="DepotName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DepotCode" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DepotAddress" Nullable="true" />
+          <Property Type="String" Name="SKUCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SKUName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BatchNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RequestType" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="RequestType_Id" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_GetCCNumber_Result">
+          <Property Type="Int64" Name="Complaint_ID" Nullable="false" />
+          <Property Type="Int32" Name="ComplaintNumber" Nullable="false" />
+          <Property Type="String" Name="ComplaintDesc" Nullable="true" />
+          <Property Type="Decimal" Name="ComplaintQty" Nullable="true" Precision="18" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="SP_GetRejectedRequest_Result">
+          <Property Type="Int64" Name="RequestHeaderId" Nullable="false" />
+          <Property Type="Int64" Name="DealerId" Nullable="true" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DealerCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DealerAddress" Nullable="true" />
+          <Property Type="Int64" Name="DepotId" Nullable="true" />
+          <Property Type="String" Name="DepotName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DepotCode" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DepotAddress" Nullable="true" />
+          <Property Type="String" Name="SKUCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SKUName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BatchNo" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CurrentStatus_Id" Nullable="false" />
+          <Property Type="String" Name="CurrentStatus" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GetInprocessRequest_Result">
+          <Property Type="Int64" Name="RequestHeaderId" Nullable="false" />
+          <Property Type="Int64" Name="DealerId" Nullable="true" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DealerCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DealerAddress" Nullable="true" />
+          <Property Type="Int64" Name="DepotId" Nullable="true" />
+          <Property Type="String" Name="DepotName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DepotCode" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DepotAddress" Nullable="true" />
+          <Property Type="String" Name="SKUCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SKUName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BatchNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FutureStatus" Nullable="false" MaxLength="50" />
+          <Property Type="Int64" Name="FutureStatus_Id" Nullable="false" />
+          <Property Type="Int32" Name="CurrentStatus_Id" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GetApprovedRequest_Result">
+          <Property Type="Int64" Name="RequestHeaderId" Nullable="false" />
+          <Property Type="Int64" Name="DealerId" Nullable="true" />
+          <Property Type="String" Name="DealerName" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DealerCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DealerAddress" Nullable="true" />
+          <Property Type="Int64" Name="DepotId" Nullable="true" />
+          <Property Type="String" Name="DepotName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="DepotCode" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="DepotAddress" Nullable="true" />
+          <Property Type="String" Name="SKUCode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SKUName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="BatchNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CurrentStatus" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CurrentStatus_Id" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="TblAdminMaster">
+          <Key>
+            <PropertyRef Name="Admin_Id" />
+          </Key>
+          <Property Name="Admin_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="SP_GetSKUCode_Result">
+          <Property Type="Int64" Name="Product_ID" Nullable="false" />
+          <Property Type="String" Name="SKUCode" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="SKUName" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="SKUDescription" Nullable="true" MaxLength="300" />
+          <Property Type="Decimal" Name="PackSize" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Unit" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="tblRequestDtl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestHeaderId" Type="Int64" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="ReadyToProvideGST" Type="Boolean" />
+          <Property Name="InvoiceUpload" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SKUName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SKUCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceQuantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SRVQuantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Unit" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PackSize" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Volume" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SRVValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CCNo" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblSalesReasonMaster">
+          <Key>
+            <PropertyRef Name="SalesReason_Id" />
+          </Key>
+          <Property Name="SalesReason_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestTypeId" Type="Int32" Nullable="false" />
+          <Property Name="SubReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblStatu">
+          <Key>
+            <PropertyRef Name="Status_Id" />
+          </Key>
+          <Property Name="Status_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int64" />
+          <Property Name="Status" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SalesReturndbModelStoreContainer" CdmEntityContainer="SalesReturndbEntities">
+          <FunctionImportMapping FunctionImportName="SP_GetCountry" FunctionName="SalesReturndbModel.Store.SP_GetCountry" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetCountry_Result">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TblRequestTypes">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblRequestType">
+              <MappingFragment StoreEntitySet="TblRequestType">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="RequestType_Id" ColumnName="RequestType_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Get_Division_For_BU" FunctionName="SalesReturndbModel.Store.SP_Get_Division_For_BU" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_Get_Division_For_BU_Result">
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetBUList" FunctionName="SalesReturndbModel.Store.sp_GetBUList" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.sp_GetBUList_Result">
+                <ScalarProperty Name="SBU_Name" ColumnName="SBU_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_LFGDetails" FunctionName="SalesReturndbModel.Store.SP_LFGDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_LFGDetails_Result">
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Emp_First_name" ColumnName="Emp_First_name" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="Desg_Desc" ColumnName="Desg_Desc" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="Mobile_no" ColumnName="Mobile_no" />
+                <ScalarProperty Name="Zone" ColumnName="Zone" />
+                <ScalarProperty Name="SBU_Name" ColumnName="SBU_Name" />
+                <ScalarProperty Name="Seg_Name" ColumnName="Seg_Name" />
+                <ScalarProperty Name="President_Code" ColumnName="President_Code" />
+                <ScalarProperty Name="Regional_Head" ColumnName="Regional_Head" />
+                <ScalarProperty Name="Country_Head" ColumnName="Country_Head" />
+                <ScalarProperty Name="segmentHead" ColumnName="segmentHead" />
+                <ScalarProperty Name="VPHead" ColumnName="VPHead" />
+                <ScalarProperty Name="DivHead" ColumnName="DivHead" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetEmployeeForBU_Division_Country" FunctionName="SalesReturndbModel.Store.SP_GetEmployeeForBU_Division_Country">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetEmployeeForBU_Division_Country_Result">
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Emp_First_name" ColumnName="Emp_First_name" />
+                <ScalarProperty Name="email_id" ColumnName="email_id" />
+                <ScalarProperty Name="Mobile_no" ColumnName="Mobile_no" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TblApprovalMatrices">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblApprovalMatrix">
+              <MappingFragment StoreEntitySet="TblApprovalMatrix">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="President" ColumnName="President" />
+                <ScalarProperty Name="VP" ColumnName="VP" />
+                <ScalarProperty Name="SegmentInvoiceAge" ColumnName="SegmentInvoiceAge" />
+                <ScalarProperty Name="SegmentHeadHRV" ColumnName="SegmentHeadHRV" />
+                <ScalarProperty Name="LogisticsHead" ColumnName="LogisticsHead" />
+                <ScalarProperty Name="LogisticsManager" ColumnName="LogisticsManager" />
+                <ScalarProperty Name="ComplaintManager" ColumnName="ComplaintManager" />
+                <ScalarProperty Name="ComplaintHandler" ColumnName="ComplaintHandler" />
+                <ScalarProperty Name="InvoiceAge" ColumnName="InvoiceAge" />
+                <ScalarProperty Name="SRV_Value" ColumnName="SRV_Value" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="BUType" ColumnName="BUType" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Matrix_Id" ColumnName="Matrix_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblReasonMasters">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblReasonMaster">
+              <MappingFragment StoreEntitySet="TblReasonMaster">
+                <ScalarProperty Name="SubReason" ColumnName="SubReason" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="ReasonMaster_Id" ColumnName="ReasonMaster_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetDepotList" FunctionName="SalesReturndbModel.Store.SP_GetDepotList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetDepotList_Result">
+                <ScalarProperty Name="DepotAddress" ColumnName="DepotAddress" />
+                <ScalarProperty Name="DepotCode" ColumnName="DepotCode" />
+                <ScalarProperty Name="DepotName" ColumnName="DepotName" />
+                <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetDealerList" FunctionName="SalesReturndbModel.Store.SP_GetDealerList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetDealerList_Result">
+                <ScalarProperty Name="DealerAddress" ColumnName="DealerAddress" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TblUploadedInvoices">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblUploadedInvoice">
+              <MappingFragment StoreEntitySet="TblUploadedInvoice">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ImageUploaded" ColumnName="ImageUploaded" />
+                <ScalarProperty Name="RequestDetail_Id" ColumnName="RequestDetail_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRequestHeaders">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblRequestHeader">
+              <MappingFragment StoreEntitySet="TblRequestHeader">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="SKUCode" ColumnName="SKUCode" />
+                <ScalarProperty Name="ReasonForReturn" ColumnName="ReasonForReturn" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblApproverDetails">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblApproverDetail">
+              <MappingFragment StoreEntitySet="TblApproverDetail">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+                <ScalarProperty Name="Approver_Id" ColumnName="Approver_Id" />
+                <ScalarProperty Name="ApproverDetails_Id" ColumnName="ApproverDetails_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblApproverHeaders">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblApproverHeader">
+              <MappingFragment StoreEntitySet="TblApproverHeader">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Requested_Role" ColumnName="Requested_Role" />
+                <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="Active_Role" ColumnName="Active_Role" />
+                <ScalarProperty Name="Request_Id" ColumnName="Request_Id" />
+                <ScalarProperty Name="Approver_Id" ColumnName="Approver_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblFutureStatus">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblFutureStatu">
+              <MappingFragment StoreEntitySet="TblFutureStatus">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Request_ID" ColumnName="Request_ID" />
+                <ScalarProperty Name="FutStatus_ID" ColumnName="FutStatus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRoleMasters">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblRoleMaster">
+              <MappingFragment StoreEntitySet="TblRoleMaster">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Role_Id" ColumnName="Role_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Get_Segment_For_BU_And_Division" FunctionName="SalesReturndbModel.Store.SP_Get_Segment_For_BU_And_Division" />
+          <FunctionImportMapping FunctionImportName="SP_GetPendingRequest" FunctionName="SalesReturndbModel.Store.SP_GetPendingRequest">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetPendingRequest_Result">
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerAddress" ColumnName="DealerAddress" />
+                <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+                <ScalarProperty Name="DepotName" ColumnName="DepotName" />
+                <ScalarProperty Name="DepotCode" ColumnName="DepotCode" />
+                <ScalarProperty Name="DepotAddress" ColumnName="DepotAddress" />
+                <ScalarProperty Name="SKUCode" ColumnName="SKUCode" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="FutureStatus" ColumnName="FutureStatus" />
+                <ScalarProperty Name="FutureStatus_Id" ColumnName="FutureStatus_Id" />
+                <ScalarProperty Name="CurrentStatus_Id" ColumnName="CurrentStatus_Id" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetEmployeeDetailsForRequest" FunctionName="SalesReturndbModel.Store.SP_GetEmployeeDetailsForRequest">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetEmployeeDetailsForRequest_Result">
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Emp_First_name" ColumnName="Emp_First_name" />
+                <ScalarProperty Name="Dept_name" ColumnName="Dept_name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Seg_Name" ColumnName="Seg_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetFutureStatusDetails" FunctionName="SalesReturndbModel.Store.SP_GetFutureStatusDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetFutureStatusDetails_Result">
+                <ScalarProperty Name="Request_ID" ColumnName="Request_ID" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Emp_First_name" ColumnName="Emp_First_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetRequestStatusDetails" FunctionName="SalesReturndbModel.Store.SP_GetRequestStatusDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetRequestStatusDetails_Result">
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Emp_First_name" ColumnName="Emp_First_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetCurrentStatusDetails" FunctionName="SalesReturndbModel.Store.SP_GetCurrentStatusDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetCurrentStatusDetails_Result">
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="EMP_CODE" ColumnName="EMP_CODE" />
+                <ScalarProperty Name="Emp_First_name" ColumnName="Emp_First_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetRequestDetail" FunctionName="SalesReturndbModel.Store.SP_GetRequestDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetRequestDetail_Result">
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerAddress" ColumnName="DealerAddress" />
+                <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+                <ScalarProperty Name="DepotName" ColumnName="DepotName" />
+                <ScalarProperty Name="DepotCode" ColumnName="DepotCode" />
+                <ScalarProperty Name="DepotAddress" ColumnName="DepotAddress" />
+                <ScalarProperty Name="SKUCode" ColumnName="SKUCode" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="RequestType_Id" ColumnName="RequestType_Id" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetCCNumber" FunctionName="SalesReturndbModel.Store.SP_GetCCNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetCCNumber_Result">
+                <ScalarProperty Name="Complaint_ID" ColumnName="Complaint_ID" />
+                <ScalarProperty Name="ComplaintNumber" ColumnName="ComplaintNumber" />
+                <ScalarProperty Name="ComplaintDesc" ColumnName="ComplaintDesc" />
+                <ScalarProperty Name="ComplaintQty" ColumnName="ComplaintQty" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetRejectedRequest" FunctionName="SalesReturndbModel.Store.SP_GetRejectedRequest">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetRejectedRequest_Result">
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerAddress" ColumnName="DealerAddress" />
+                <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+                <ScalarProperty Name="DepotName" ColumnName="DepotName" />
+                <ScalarProperty Name="DepotCode" ColumnName="DepotCode" />
+                <ScalarProperty Name="DepotAddress" ColumnName="DepotAddress" />
+                <ScalarProperty Name="SKUCode" ColumnName="SKUCode" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="CurrentStatus_Id" ColumnName="CurrentStatus_Id" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetInprocessRequest" FunctionName="SalesReturndbModel.Store.SP_GetInprocessRequest">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetInprocessRequest_Result">
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerAddress" ColumnName="DealerAddress" />
+                <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+                <ScalarProperty Name="DepotName" ColumnName="DepotName" />
+                <ScalarProperty Name="DepotCode" ColumnName="DepotCode" />
+                <ScalarProperty Name="DepotAddress" ColumnName="DepotAddress" />
+                <ScalarProperty Name="SKUCode" ColumnName="SKUCode" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="FutureStatus" ColumnName="FutureStatus" />
+                <ScalarProperty Name="FutureStatus_Id" ColumnName="FutureStatus_Id" />
+                <ScalarProperty Name="CurrentStatus_Id" ColumnName="CurrentStatus_Id" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetApprovedRequest" FunctionName="SalesReturndbModel.Store.SP_GetApprovedRequest">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetApprovedRequest_Result">
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="DealerId" ColumnName="DealerId" />
+                <ScalarProperty Name="DealerName" ColumnName="DealerName" />
+                <ScalarProperty Name="DealerCode" ColumnName="DealerCode" />
+                <ScalarProperty Name="DealerAddress" ColumnName="DealerAddress" />
+                <ScalarProperty Name="DepotId" ColumnName="DepotId" />
+                <ScalarProperty Name="DepotName" ColumnName="DepotName" />
+                <ScalarProperty Name="DepotCode" ColumnName="DepotCode" />
+                <ScalarProperty Name="DepotAddress" ColumnName="DepotAddress" />
+                <ScalarProperty Name="SKUCode" ColumnName="SKUCode" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="CurrentStatus" ColumnName="CurrentStatus" />
+                <ScalarProperty Name="CurrentStatus_Id" ColumnName="CurrentStatus_Id" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TblAdminMasters">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblAdminMaster">
+              <MappingFragment StoreEntitySet="TblAdminMaster">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="Admin_Id" ColumnName="Admin_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetSKUCode" FunctionName="SalesReturndbModel.Store.SP_GetSKUCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SalesReturndbModel.SP_GetSKUCode_Result">
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="SKUCode" ColumnName="SKUCode" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="SKUDescription" ColumnName="SKUDescription" />
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetSavedAsDraftRequest" FunctionName="SalesReturndbModel.Store.SP_GetSavedAsDraftRequest" />
+          <EntitySetMapping Name="tblRequestDtls">
+            <EntityTypeMapping TypeName="SalesReturndbModel.tblRequestDtl">
+              <MappingFragment StoreEntitySet="tblRequestDtl">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CCNo" ColumnName="CCNo" />
+                <ScalarProperty Name="SRVValue" ColumnName="SRVValue" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="SRVQuantity" ColumnName="SRVQuantity" />
+                <ScalarProperty Name="InvoiceQuantity" ColumnName="InvoiceQuantity" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="SKUCode" ColumnName="SKUCode" />
+                <ScalarProperty Name="SKUName" ColumnName="SKUName" />
+                <ScalarProperty Name="InvoiceUpload" ColumnName="InvoiceUpload" />
+                <ScalarProperty Name="ReadyToProvideGST" ColumnName="ReadyToProvideGST" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="RequestHeaderId" ColumnName="RequestHeaderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSalesReasonMasters">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblSalesReasonMaster">
+              <MappingFragment StoreEntitySet="TblSalesReasonMaster">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SubReason" ColumnName="SubReason" />
+                <ScalarProperty Name="RequestTypeId" ColumnName="RequestTypeId" />
+                <ScalarProperty Name="SalesReason_Id" ColumnName="SalesReason_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblStatus">
+            <EntityTypeMapping TypeName="SalesReturndbModel.TblStatu">
+              <MappingFragment StoreEntitySet="TblStatus">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Status_Id" ColumnName="Status_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
