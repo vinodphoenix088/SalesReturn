@@ -1,0 +1,393 @@
+﻿<style>
+    div.scrollmenu {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+
+    th {
+        text-align: center;
+    }
+
+    .table > thead > tr > th {
+        vertical-align: top;
+    }
+
+    .box.box-primary {
+        border-top-color: #14448a;
+    }
+
+    thead {
+        white-space: nowrap;
+        padding: 15px !important;
+        background: #14448a;
+        color: white;
+    }
+</style>
+
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12" ng-show="ApprovedRequestGrid == true">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border"style="text-align:center;">
+                    <h3 class="box-title"> Approved Request<a ng-click="init()" title="Refresh" style="color: blue; cursor: pointer"><i class="fa fa-fw fa-refresh"></i></a></h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <div>
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Request No.</th>
+                                            <th>Depot</th>
+                                            <th>
+                                                Dealer
+                                            </th>
+
+                                            <!--  <th>Reason For Return
+                                            </th>-->
+                                            <th>
+                                                Total SRV Value (INR)
+                                            </th>
+                                            <th>
+                                                Requested By
+                                            </th>
+                                            <th>
+                                                Requested Date
+                                            </th>
+                                            <th>
+                                                Status
+                                            </th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="Obj in ApprovedRequestList">
+                                            <td>
+                                                {{ $index + 1 }}
+
+                                            </td>
+                                            <td>
+                                                {{Obj.RequestTypeOption}}-{{ Obj.RequestHeaderId }}
+                                            </td>
+                                            <td>
+                                                {{ Obj.DepotName }} : {{ Obj.DepotCode }}
+                                            </td>
+                                            <td>
+                                                {{ Obj.DealerName }} : {{ Obj.DealerCode }}
+                                            </td>
+
+                                            <!-- <td>{{ Obj.ReasonForReturn }}
+
+    </td>-->
+                                            <td>
+                                                {{ Obj.TotalSRV }}
+                                            </td>
+                                            <td>
+                                                {{ Obj.CreatedBy }} : {{Obj.CreatedBy_EMP_CODE}}
+                                            </td>
+                                            <td>
+                                                {{ Obj.CreatedDate | date : 'dd MMM yyyy' }}
+                                            </td>
+                                            <td>
+                                                <a href ng-click="openStatus(Obj.RequestHeaderId,Obj.RequestTypeOption)"><span class="badge">{{ Obj.CurrentStatus }}</span></a>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-primary btn-xs" ng-click="ViewRequestDetails(Obj.RequestHeaderId ,Obj.CurrentStatus_Id , Obj.FutureStatus_Id , Obj)">
+                                                    View Detail
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" class="ng-isolate-scope"><!-- ngIf: 1 < pages.length || !autoHide --></dir-pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+
+                </form>
+
+
+            </div>
+            <!-- /.box -->
+        </div><!--col end-->
+    </div><!--row end-->
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12"  ng-show="ApprovedRequestForm == true">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border" style="text-align:center;">
+                    <h3 class="box-title">Request Detail</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr><th>Request No.</th>
+                                    <th>Depot Name</th>
+                                    <th>
+                                        Dealer Name &amp; Code
+                                    </th>
+                                    <th>
+                                        Reason for Return
+                                    </th>
+                                    <th>
+                                        Total SRV
+                                    </th>
+                                    <th>
+                                        Requested Date
+                                    </th>
+
+                                    <th>
+                                        Requested By
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <span>{{ ApprovedRequestDetails.RequestTypeOption }} - {{ApprovedRequestDetails.RequestHeader_Id}}</span><br />
+                                        <span ng-show="ApprovedRequestDetails.ParentRequest">(Parent Req - S-{{ApprovedRequestDetails.ParentRequest}})</span>
+                                    </th>
+                                    <th>{{ ApprovedRequestDetails.DepotName }}</th>
+                                    <th>{{ ApprovedRequestDetails.DealerName }}</th>
+                                    <th>{{ ApprovedRequestDetails.ReasonForReturn }}</th>
+                                    <th>{{ TotalSRV_ }}</th>
+                                    <th>{{ CreatedDate_ | date : 'dd MMM yyyy'}}</th>
+                                    <th>{{ CreatedBy_ }}</th>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    </div>
+                        <div class="box-body ">
+
+                            <div class="table-responsive">
+                                <div 
+
+                                     style="min-height: 314px; height: 484px;">
+                                    <table id="Table1" class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>S.No</th>
+                                                <th>
+                                                    Invoice
+                                                    Number
+                                                </th>
+                                                <th>
+                                                    Invoicer
+                                                    Date
+                                                </th>
+                                                <th>
+                                                    Dealer Is ready to
+                                                    provide GST invoice
+                                                </th>
+                                                <th>
+                                                    Invoice
+                                                    Upload
+
+                                                </th>
+
+                                                <th>
+                                                    SKU
+                                                    Code
+                                                </th>
+                                                <th>
+                                                    SKU
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    Batch
+                                                    No.
+                                                </th>
+                                                <th>
+                                                    Manufacturing Date
+
+                                                </th>
+                                                <th>
+                                                    Shelf Life
+                                                    (In Days)
+
+                                                </th>
+                                                <th>
+                                                    Invoice
+                                                    Quantity
+                                                </th>
+                                                <th>
+                                                    SRV
+                                                    Quantity
+                                                </th>
+                                                <th>
+                                                    Unit
+                                                </th>
+                                                <th>
+                                                    Pack
+                                                    Size
+                                                </th>
+                                                <th>
+                                                    Volume
+                                                </th>
+                                                <th>
+                                                    SRV
+                                                    Value (In INR)
+                                                </th>
+                                                <th ng-if="ApprovedRequestDetails.ReasonForReturn_Id  == 1">
+                                                    CC
+                                                    No.
+                                                </th>
+                                                <th>
+                                                    Sub Reason
+
+                                                </th>
+                                                <th ng-show="CurrentStatus_Id>10021">Received</th>
+                                                <th ng-show="CurrentStatus_Id>10021">Damaged(In Receive)</th>
+                                                <th>
+                                                    Remarks
+                                                </th>
+
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="Obj in ApprovedRequestDetails.RequestDetail">
+                                                <td>
+                                                    {{ $index + 1 }}
+                                                <td>
+                                                    {{ Obj.InvoiceNo }}
+                                                </td>
+                                                <td>
+                                                    <!-- <input type="date" ng-model="Obj.InvoiceDate" class="form-control pull-right" id="datepicker" style="width: 155px;">-->
+                                                    <p ng-if="CompareDate(Obj.InvoiceDate)">   {{ Obj.InvoiceDate | date : 'dd MMM yyyy' }}</p>
+                                                </td>
+
+                                                <td>
+                                                    <!--<span ng-if="Obj.ProvideGST_Yes">
+            Yes
+        </span>
+        <span ng-if="!Obj.ProvideGST_Yes">No</span>-->
+                                                    <p ng-if="CompareDate(Obj.InvoiceDate)">
+                                                        <span ng-if="Obj.ProvideGST_Yes">
+                                                            Yes
+                                                        </span>
+                                                        <span ng-if="!Obj.ProvideGST_Yes">-</span>
+                                                    </p>
+                                                    <p ng-if="!CompareDate(Obj.InvoiceDate)">-</p>
+                                                </td>
+                                                <td ng-if="Obj.ProvideGST_Yes">
+                                                    <a ng-href="../{{Obj.UploadedInvoice}}" target="_blank">{{ Obj.UploadedInvoice }}</a>
+                                                </td>
+
+                                                <td ng-if="!Obj.ProvideGST_Yes">
+                                                    -
+
+                                                </td>
+                                                <td>
+                                                    {{ Obj.SKUCode }}
+                                                </td>
+                                                <td>
+                                                    {{ Obj.SKUName}}
+                                                </td>
+                                                <td>
+                                                    {{ Obj.BatchNo }}
+                                                </td>
+                                                <td>
+                                                    {{ Obj.Manufacturing_Date | date : 'dd MMM yyyy' }}
+                                                </td>
+                                                <td>
+                                                    {{ Obj.Shelf_Life }}
+                                                </td>
+                                                <td>
+                                                    {{ Obj.InvoiceQuantity }}
+
+                                                </td>
+                                                <td>{{ Obj.SRVQuantity }}</td>
+                                                <td>{{ Obj.Unit }}</td>
+                                                <td>{{ Obj.PackSize }}</td>
+                                                <td>{{ Obj.SRVQuantity  *  Obj.PackSize }}</td>
+                                                <td>
+                                                    {{ Obj.SRVValue }}
+                                                </td>
+                                                <td ng-if="ApprovedRequestDetails.ReasonForReturn_Id  == 1">
+                                                    {{ Obj.ComplaintNumber }}
+                                                </td>
+                                                <td>
+                                                    {{ Obj.SubReasonName }}
+                                                </td>
+
+                                                <td ng-show="CurrentStatus_Id>10021">
+                                                    {{Obj.ReceivedQuantity-Obj.Excess}}>
+                                                </td>
+                                                <td ng-show="CurrentStatus_Id>10021">
+                                                    {{Obj.Damaged}}
+
+                                                </td>
+                                                <td>
+                                                    {{ Obj.Remarks }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-body ">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>Role</th>
+                                            <th>Employee Details</th>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                            <th>Remark</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in grid">
+                                            <td>{{item.Department}}</td>
+                                            <td>
+                                                <span ng-if="item.EMP_CODE">{{item.Emp_First_name}} : {{item.EMP_CODE}}</span>
+                                                <!--<label ng-if="item.Status == 'null'">Catalyst Team</label>-->
+                                                <!--<label ng-if="item.Status != 'Pending - Catalyst' && item.Status != 'Pending - Catalyst'">{{item.EMP_CODE}} : {{item.Emp_First_name}}</label>-->
+                                            </td>
+                                            <td>{{item.Status}}</td>
+                                            <td>{{item.Added_Date | date:'dd-MM-yyyy'}}</td>
+                                            <td>{{item.Remark}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button class="btn btn-primary"  ng-click="init()" type="button" style="margin-left: 10px;float:right;">Back</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+        </div><!--col end-->
+    </div><!--row end-->
+</section>
+

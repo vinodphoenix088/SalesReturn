@@ -1,0 +1,78 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Requester Details</h3>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Employee Code</th>
+                <th>Employee Name</th>
+                <th>BU</th>
+                <th>Division</th>
+            </tr>
+        </thead>
+        <tbody style="text-align : center;">
+            <tr>
+                <td>{{EmployeeDetails.EMP_CODE}}</td>
+                <td>{{EmployeeDetails.Emp_First_name}}</td>
+                <td>{{EmployeeDetails.SBU_Name}} </td>
+                <td>{{EmployeeDetails.Dept_name}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal-header">
+    <h4>Request Status Details : {{Request_Option}}-{{Request_Id}}</h4>
+</div>
+<br />
+<div>
+    <ul class="progress-indicator" style="overflow-x:auto">
+        <li class="completed" ng-repeat="item in PendingStatusData">
+            <span class="bubble"></span>
+            {{item.Status}} <br>{{item.Added_Date | date:'dd-MM-yyyy'}}
+        </li>
+        <li class="active" ng-repeat="item in FutureStatus" ng-if="item.Status.indexOf('Rejected')==-1">
+            <span class="bubble"></span>
+            {{item.Status}} <br>{{item.EmployeeCode}}
+        </li>
+    </ul>
+</div>
+<hr />
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Role</th>
+                <th>Employee Details</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Remark</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in grid">
+                <td>{{item.Department}}</td>
+                <td>
+                    <span ng-if="item.EMP_CODE">{{item.Emp_First_name}} : {{item.EMP_CODE}} </span>
+                 </td>
+                <td>{{item.Status}}</td>
+                <td>{{item.Added_Date | date:'dd-MM-yyyy'}}</td>
+                <td>{{item.Remark}}</td>
+
+
+
+
+
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="modal-footer">
+
+
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Back</button>
+</div>

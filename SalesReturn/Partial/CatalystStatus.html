@@ -1,0 +1,189 @@
+﻿<style>
+    div.scrollmenu {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            div.scrollmenu a:hover {
+                background-color: #777;
+            }
+
+    th {
+        text-align: center;
+    }
+
+    .table > thead > tr > th {
+        vertical-align: top;
+    }
+
+    .box.box-primary {
+        border-top-color: #14448a;
+    }
+
+    thead {
+        white-space: nowrap;
+        padding: 15px !important;
+        background: #14448a;
+        color: white;
+    }
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div style="text-align:center;">
+                        <h3>Catalyst Report</h3>
+                    </div><!--col end-->
+
+                    <div>
+                    </div><!--col end-->
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div style="text-align: center;
+    margin-bottom: 19px;">
+                            <button class="btn btn-primary btn-xs" ng-click="GetOpenRequest()" style="background:#14448a;">OPEN REQUEST</button>
+                            <button class="btn btn-primary btn-xs" ng-click="GetClosedRequest()" style="background:#14448a;">CLOSED REQUEST</button>
+                        </div>
+
+                        <div ng-show="Showp1==true">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Request No.</th>
+                                        <th>Depot</th>
+                                        <th>
+                                            Dealer
+                                        </th>
+
+                                        <!--  <th>Reason For Return
+                                        </th>-->
+                                        <th>
+                                            Total SRV Value
+                                        </th>
+                                        <th>
+                                            Requested By
+                                        </th>
+                                        <th>
+                                            Requested Date
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in OpenRequestList">
+                                        <td>
+                                            {{$index + 1}}
+                                        </td>
+                                        <td>
+                                            {{item.SKUCode}}-{{item.RequestHeaderId}}
+                                        </td>
+                                        <td>
+                                            {{item.DepotAddress}} : {{item.DepotCode}}
+                                        </td>
+                                        <td>
+                                            {{item.DealerName}} : {{item.DealerCode}}
+                                        </td>
+                                        <td>
+                                            {{item.TotalSRV}}
+                                        </td>
+                                        <td>
+                                            {{item.CreatedBy}} : {{item.CreatedBy_EMP_CODE}}
+                                        </td>
+                                        <td>
+                                            {{item.CreatedDate | date: 'dd-MMM-yyyy'}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-warning btn-xs">
+                                                {{item.CurrentStatus}}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div ng-show="Showp1==false">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Request No.</th>
+                                        <th>Depot</th>
+                                        <th>
+                                            Dealer
+                                        </th>
+
+                                        <!--  <th>Reason For Return
+                                        </th>-->
+                                        <th>
+                                            Total SRV Value
+                                        </th>
+                                        <th>
+                                            Requested By
+                                        </th>
+                                        <th>
+                                            Requested Date
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in ClosedRequestList">
+                                        <td>
+                                            {{$index + 1}}
+
+                                        </td>
+                                        <td>
+
+                                            {{item.SKUCode}}-{{item.RequestHeaderId}}
+                                        </td>
+                                        <td>
+                                            {{item.DepotAddress}} : {{item.DepotCode}}
+                                        </td>
+                                        <td>
+                                            {{item.DealerName}} :  {{item.DealerCode}}
+                                        </td>
+                                        <td>
+                                            {{item.TotalSRV}}
+                                        </td>
+                                        <td>
+                                            {{item.CreatedBy}} : {{item.CreatedBy_EMP_CODE}}
+                                        </td>
+                                        <td>
+                                            {{item.CreatedDate | date: 'dd-MMM-yyyy'}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary btn-xs">
+                                                {{item.CurrentStatus}}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </form>
+            </div><!--primary-->
+        </div><!--cole dn-->
+    </div><!--row end-->
+</section>

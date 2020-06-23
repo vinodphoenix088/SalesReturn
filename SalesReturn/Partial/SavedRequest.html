@@ -1,0 +1,415 @@
+﻿<style>
+    div.scrollmenu {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+    th {
+        text-align: center;
+    }
+
+    .table > thead > tr > th {
+        vertical-align: top;
+    }
+
+    .box.box-primary {
+        border-top-color: #14448a;
+    }
+
+    thead {
+        white-space: nowrap;
+        padding: 15px !important;
+        background: #14448a;
+        color: white;
+    }
+</style>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12" ng-show="SavedRequestGrid == true">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border" style="text-align:center;">
+                    <h3 class="box-title">Saved Request<a ng-click="init()" title="Refresh" style="color: blue; cursor: pointer"><i class="fa fa-fw fa-refresh"></i></a></h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Request No.</th>
+                                        <th>Depot</th>
+                                        <th>Dealer</th>
+                                        <!--  <th>Reason For Return</th>-->
+                                        <th>Total SRV Value (INR)</th>
+                                        <th>Requested By</th>
+                                        <th>Requested Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="Obj in SavedAsDraftRequestList" style="text-align:center;">
+                                        <td>{{ $index + 1 }} </td>
+                                        <td> {{Obj.RequestTypeOption}}-{{ Obj.RequestHeaderId }} </td>
+                                        <td> {{ Obj.DepotName }} </td>
+                                        <td> {{ Obj.DealerName }} </td>
+                                        <!-- <td>{{ Obj.ReasonForReturn }} </td>-->
+                                        <td> {{ Obj.TotalSRV }} </td>
+                                        <td> {{ Obj.CreatedBy }} : {{Obj.CreatedBy_EMP_CODE}} </td>
+                                        <td> {{ Obj.CreatedDate | date : 'dd MMM yyyy' }} </td>
+                                        <td>
+                                            <a href ng-click="openStatus(Obj.RequestHeaderId,Obj.RequestTypeOption)"><span class="badge">{{ Obj.FutureStatus }}</span></a>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary btn-xs" ng-click="ViewRequestDetails(Obj.RequestHeaderId ,Obj.CurrentStatus_Id , Obj.FutureStatus_Id , Obj)">
+                                                View Detail
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" class="ng-isolate-scope"><!-- ngIf: 1 < pages.length || !autoHide --></dir-pagination-controls>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+        <!--col end-->
+    </div>
+    <!--row end-->
+
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" ng-show="SavedRequestGrid == false">
+                    <div class="box-body">
+                        <table class="table table-bordered table-hover">
+                            <thead style="background:#14448a;color:white;">
+                                <tr>
+                                    <th>Depot Name</th>
+                                    <th>
+                                        Dealer Name &amp; Code
+                                    </th>
+                                    <th>
+                                        Reason for Return
+                                    </th>
+                                    <th>
+                                        Total SRV
+                                    </th>
+                                    <th>
+                                        Requested Date
+                                    </th>
+                                    <th>
+                                        Requested By
+                                    </th>
+                                    <th>
+                                       Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="text-align: center;">
+                                    <th>{{ SavedRequestDetails.DepotName }}</th>
+                                    <th>{{ SavedRequestDetails.DealerName }}</th>
+                                    <th>{{ SavedRequestDetails.ReasonForReturn }}</th>
+                                    <th>{{ TotalSRV_ }}</th>
+                                    <th>{{ CreatedDate_ | date : 'dd MMM yyyy'}}</th>
+                                    <th>{{ CreatedBy_ }}</th>
+                                    <th>
+                                            <button class="btn btn-primary btn-xs" ng-click="Add()" type="button" style="float: right;">+</button>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--<div class="row">
+                            <div class="form-group col-sm-3">
+                                <label>Depot Name</label>
+                                <br />
+                                <ui-select remove-selected="false" ng-model="SavedRequestDetails.DepotObj" theme="select2" on-select="GetDealerList(SavedRequestDetails.DepotObj.DepotId)" style="min-width: 300px;" title="Choose a Depot">
+                                    <ui-select-match placeholder="Select a Depot">{{$select.selected.DepotCode}} : {{ $select.selected.DepotName }}</ui-select-match>
+                                    <ui-select-choices repeat="person in DepotList | filter: { DepotCode: $select.search } | limitTo:8">
+                                        <div>{{ person.DepotName }} : {{  person.DepotCode }}</div>
+
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+
+                            <div class="form-group col-sm-3">
+                                <label>Dealer Name & Code</label>
+
+                                <ui-select remove-selected="false" ng-model="SavedRequestDetails.DealerObj" theme="select2" style="min-width: 300px;" title="Choose a Dealer">
+                                    <ui-select-match placeholder="Select a Dealer">{{$select.selected.DealerCode}} : {{$select.selected.DealerName}}</ui-select-match>
+                                    <ui-select-choices repeat="person in DealerList | filter: { DealerCode: $select.search } | limitTo:8">
+                                        <div>{{ person.DealerCode }} : {{  person.DealerName }}</div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+
+                            <div class="form-group col-sm-3">
+                                <label>Reason for Return</label>
+                                <ui-select remove-selected="false" ng-model="SavedRequestDetails.ReasonForReturnObj" theme="select2" style="min-width: 300px;" title="Choose a Reason">
+                                    <ui-select-match placeholder="Select a Reason">{{$select.selected.RequestType}}</ui-select-match>
+                                    <ui-select-choices repeat="person in RequestTypeList | filter: { RequestType: $select.search } | limitTo:8">
+                                        <div ng-bind-html="person.RequestType | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <button class="btn btn-primary btn-xs" ng-click="Add()" type="button" style="float: right;">+</button>
+                            </div>
+                        </div>-->
+                       
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <div style="min-height: 314px; height: 484px;">
+                                <table id="Table2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr style="text-align: center;">
+                                            <th>
+                                                S.No
+                                            </th>
+                                            <th>
+                                                Invoice
+                                                Number
+                                            </th>
+                                            <th>
+                                                Invoice
+                                                Date
+                                            </th>
+                                            <th>
+                                                Dealer Is ready to
+                                                provide GST invoice
+                                            </th>
+                                            <th>
+                                                Invoice
+                                                Upload
+                                            </th>
+                                            <th>
+                                                SKU
+                                                Name
+                                            </th>
+                                            <th>
+                                                SKU
+                                                Code
+                                            </th>
+                                            <th>
+                                                Batch
+                                                No.
+                                            </th>
+                                            <th>
+                                                Manufacturing
+                                                Date
+                                            </th>
+                                            <th>
+                                                Shelf Life
+                                                (In Days)
+                                            </th>
+                                            <th>
+                                                Invoice
+                                                Quantity
+                                            </th>
+                                            <th>
+                                                SRV
+                                                Quantity
+                                            </th>
+                                            <th>
+                                                Unit
+                                            </th>
+                                            <th>
+                                                Pack Size
+                                            </th>
+                                            <th>
+                                                Volume
+                                            </th>
+                                            <th>
+                                                SRV
+                                                Value (In INR)
+                                            </th>
+                                            <th ng-if="SavedRequestDetails.ReasonForReturn_Id  == 1">
+                                                CC
+                                                No.
+                                            </th>
+                                            <th>
+                                                Sub Reason
+                                            </th>
+                                            <th>
+                                                Remarks
+                                            </th>
+                                            <th>
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="Obj in SavedRequestDetails.RequestDetail" style="text-align: center;">
+                                            <td>
+                                                {{ $index + 1 }}
+                                            <td>
+                                                <input type="text" ng-model="Obj.InvoiceNo" class="form-control">
+                                            </td>
+                                            <td>
+                                                <!-- <input type="date" ng-model="Obj.InvoiceDate" class="form-control pull-right" id="datepicker" style="width: 155px;"></td>-->
+                                                <datepicker date-max-limit="{{TodayDate.toString()}}" date-format="dd MMM yyyy" button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+                                                    <input readonly class="form-control" ng-model="Obj.InvoiceDate" ng-change="ResetProvideGST($index)" type="text" />
+                                                </datepicker>
+                                            </td>
+                                            <td>
+                                                <div class="checkbox" ng-if="CompareDate(Obj.InvoiceDate)">
+                                                    <label style="margin: 0px 20px 0px 13px;">
+                                                        <input type="checkbox" ng-model="Obj.ProvideGST_Yes" ng-change=" Obj.ProvideGST_No = false" value="1">Yes
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" ng-model="Obj.ProvideGST_No" ng-change=" Obj.ProvideGST_Yes = false" value="0">No
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <input accept="image/*,.doc, .docx,.pdf" ng-if="CompareDate(Obj.InvoiceDate) && Obj.ProvideGST_Yes" type="file" file-model="Obj.InvoiceUpload" id="exampleInputFile" style="width: 200px;">
+
+                                                <span ng-if="Obj.ProvideGST_Yes"><a ng-href="../{{Obj.UploadedInvoice}}" target="_blank">{{ Obj.UploadedInvoice }}</a></span>
+                                                <span ng-if="Obj.ProvideGST_No">-</span>
+                                            <td>
+                                                <!--    <input style="width: 154px;" type="text" ng-model="Obj.selectedSKU" uib-typeahead="pt as pt.SKUCode for pt in SKUCodeList | filter:$viewValue | limitTo:8" class="form-control">-->
+
+                                                <ui-select remove-selected="false" ng-change="GetBatchNO(Obj.selectedSKU)" ng-model="Obj.selectedSKU" theme="select2" style="min-width: 300px;" title="Choose a SKU">
+                                                    <ui-select-match placeholder="Select a SKU">{{$select.selected.SKUName}}</ui-select-match>
+                                                    <ui-select-choices repeat="person  in SKUCodeList  | filter: { SKUCode: $select.search } | limitTo:8">
+                                                        <div ng-bind-html="person.SKUName | highlight: $select.search"></div>
+
+                                                    </ui-select-choices>
+                                                </ui-select>
+
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.selectedSKU.SKUCode" disabled class="form-control" style="width: 65px;">
+                                            </td>
+                                            <td>
+                                                <select type="text" ng-model="Obj.BatchNo" ng-change="changeData(Obj.BatchNo)" ng-options="pt.Batch_No as pt.Batch_No for pt in Obj.BatchList" class="form-control" style="width: 65px;"></select>
+                                            </td>
+                                            <td>
+                                                <datepicker ng-if="Obj.BatchNo" date-max-limit="{{TodayDate.toString()}}"
+                                                            date-format="dd MMM yyyy"
+                                                            button-prev="<i class='fa fa-arrow-left'></i>"
+                                                            button-next="<i class='fa fa-arrow-right'></i>">
+                                                    <input readonly class="form-control" disabled ng-model="Obj.Manufacturing_Date | date : 'dd MMM yyyy'" type="text" />
+
+                                                </datepicker>
+                                                <!--{{ Obj.Manufacturing_Date | date : 'dd MMM yyyy' }}-->
+                                            </td>
+                                            <td>
+                                                <input ng-if="Obj.BatchNo && Obj.Shelf_Life <= 0" type="text" disabled ng-model="Obj.Shelf_Life" class="form-control" style="width: 65px; color:red">
+                                                <input ng-if="Obj.BatchNo && Obj.Shelf_Life > 0" type="text" disabled ng-model="Obj.Shelf_Life" class="form-control" style="width: 65px;">
+                                                <!--{{ Obj.Shelf_Life }}-->
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.InvoiceQuantity" numbers-only class="form-control" style="width: 65px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.SRVQuantity" ng-change="checkQuntity(Obj)" numbers-only class="form-control" style="width: 65px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.Unit" ng-disabled="true" class="form-control" style="width: 65px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.PackSize" ng-disabled="true" numbers-only class="form-control" style="width: 65px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.Volume" ng-disabled="true"
+                                                       ng-value="Obj.SRVQuantity * Obj.PackSize" class="form-control" style="width: 65px;">
+                                            </td>
+
+                                            <td>
+                                                <input type="text" ng-model="Obj.SRVValue" numbers-only class="form-control" style="width: 65px;">
+                                            </td>
+                                            <td ng-if="SavedRequestDetails.ReasonForReturn_Id == 1">
+
+                                                <ui-select ng-model="Obj.selectedComplaint" theme="select2" style="min-width: 300px;" title="Choose a Complaint Number">
+                                                    <ui-select-match placeholder="Select a Complaint Number">{{$select.selected.ComplaintNumber}}</ui-select-match>
+                                                    <ui-select-choices repeat="person in CCList | filter: { ComplaintNumber: $select.search } | limitTo:8">
+                                                        <div ng-bind-html="person.ComplaintNumber | highlight: $select.search"></div>
+
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </td>
+                                            <td>
+                                                <select type="text" ng-model="Obj.SubReason" ng-options="pt.salesReasonId as pt.SubReason for pt in SubReasonList" class="form-control" style="width: 65px;"></select>
+                                            </td>
+                                            <td>
+                                                <textarea class="form-control" ng-model="Obj.Remarks" rows="3" style="width: 250px; height: 34px;"></textarea>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <button class="btn btn-danger btn-xs" ng-click="RemoveRow($index , Obj)" type="button">-</button>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-inverse">
+                                    <tr style="text-align: center;">
+                                        <th>Role</th>
+                                        <th>Employee Details</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Remark</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in grid" style="text-align: center;">
+                                        <td>{{item.Department}}</td>
+                                        <td>
+                                            <span ng-if="item.EMP_CODE">{{item.EMP_CODE}} : {{item.Emp_First_name}}</span>-->
+                                            <!--<label ng-if="item.Status == 'null'">Catalyst Team</label>-->
+                                            <!--<label ng-if="item.Status != 'Pending - Catalyst' && item.Status != 'Pending - Catalyst'">{{item.EMP_CODE}} : {{item.Emp_First_name}}</label>-->
+                                        <!--</td>
+                                        <td>{{item.Status}}</td>
+                                        <td>{{item.Added_Date | date:'dd-MM-yyyy'}}</td>
+                                        <td>{{item.Remark}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>-->
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <div style="float:right;">
+                            <button class="btn btn-success btn-xs" ng-click="UpdateRequest()" type="button" style="margin-left: 5px;">Update</button>
+                            <!--<button class="btn btn-primary btn-xs" ng-click="SaveAsDraft()" type="button" style="margin-left: 5px;">Save</button>-->
+                            <button class="btn btn-warning btn-xs" ng-click="init()" type="button" style="margin-left: 5px;">Back</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+        </div><!--col end-->
+    </div><!--row end-->
+</section>

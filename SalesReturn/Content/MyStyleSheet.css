@@ -1,0 +1,9 @@
+﻿.badge {
+background-color: #3c8dbc !important;
+}
+
+.Button-class {
+float: right;
+    position: relative;
+    margin-top: -25px;
+}

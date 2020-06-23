@@ -1,0 +1,94 @@
+﻿<style>
+    div.scrollmenu {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            div.scrollmenu a:hover {
+                background-color: #777;
+            }
+
+    th {
+        text-align: center;
+    }
+
+    .table > thead > tr > th {
+        vertical-align: top;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12 grids panel">
+        <!-- general form elements -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Admin Master</h3>
+                <button class="btn btn-primary btn-sm Button-class" ng-click="AddNewRow()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+                <div class="box-body ">
+                    <div>
+
+                        <div class="box-body table-responsive" style="overflow: unset;">
+                            <div class="box scrollmenu">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>S.No</th>
+                                            <th>Employee Code</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="Obj in AdminList">
+                                            <td>
+                                                {{ $index + 1 }}
+
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.EmployeeCode" class="form-control">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger btn-sm" style="float: right" ng-click="RemoveRow(Obj.Admin_Id , $index)">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" class="ng-isolate-scope"><!-- ngIf: 1 < pages.length || !autoHide --></dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" ng-click="UpdateAdminList()" style="margin-left: 10px;">Update</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- /.box-body -->
+            </form>
+        </div>
+        <!-- /.box -->
+        <!-- Form Element sizes -->
+        <!-- /.box -->
+        <!-- /.box -->
+        <!-- Input addon -->
+        <!-- /.box -->
+
+    </div>
+</div>

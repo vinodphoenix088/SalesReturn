@@ -1,0 +1,130 @@
+﻿<style>
+    div.scrollmenu {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            div.scrollmenu a:hover {
+                background-color: #777;
+            }
+
+    th {
+        text-align: center;
+    }
+
+    .table > thead > tr > th {
+        vertical-align: top;
+    }
+    .box.box-primary {
+        border-top-color: #14448a;
+    }
+
+    thead {
+        white-space: nowrap;
+        padding: 15px !important;
+        background: #14448a;
+        color: white;
+    }
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border" style="color: black;">
+
+
+                    <div style="text-align:center;">
+                        <h3 class="box-title">
+                            Sales Return Reasons (SAP)
+                        </h3>
+                    </div><!--col end-->
+
+
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="row" ng-show="showUpload==true">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Upload</label>
+                                    <input type="file" id="exampleInputFile" class="form-control">
+
+
+                                </div>
+                            </div><!--cole nd-->
+                            <div class="col-sm-4" style="margin-top:31px;">
+                                <button class="btn btn-primary btn-xs">
+                                    Upload
+                                </button>
+                                <button class="btn btn-primary btn-xs">
+                                    Template
+                                </button>
+                            </div><!--col end-->
+                        </div><!--row end-->
+                        <table id="example2" class="table table-bordered table-hover" ng-show="showUpload==false">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Reason</th>
+                                    <th>Sub Reason</th>
+                                    <th>
+                                        <button class="btn btn-primary btn-xs " ng-click="AddNewRow()">
+                                            +
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="pt in ReasonDeatil">
+                                <tr>
+                                    <td>
+                                        {{ $index + 1 }}
+
+                                    </td>
+
+                                    <td>
+                                        <div class="form-group">
+
+                                            <select class="form-control" ng-model="pt.RequestTypeId" ng-options="dt.ReasonMaster_Id as dt.Reason for dt in RequestTypeList">
+                                                <option>Select Reason</option>
+                                            </select>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="form-group">
+                                            <select class="form-control" ng-model="pt.SubReasonID" ng-options="dt.SAPID as dt.SubReasons for dt in ReasonDeatilSAP">
+                                                <option>Select SubReasopn</option>
+                                            </select>
+                                            <!--<input type="text" class="form-control" ng-model="pt.SubReason" placeholder="Enter SubReason">-->
+                                        </div>
+                                    </td>
+
+                                    <td style="text-align:center;">
+                                        <button ng-click="RemoveRow(pt.SalesReason_Id,$index)" class="btn btn-danger btn-xs">-</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer" ng-show="showUpload==false">
+                        <button class="btn btn-primary btn-xs pull-right" ng-click="Update()" style="margin-left: 10px;">Update</button>
+
+                    </div><!--footer-->
+                </form>
+            </div><!--primary-->
+        </div><!--cole dn-->
+    </div><!--row end-->
+</section>

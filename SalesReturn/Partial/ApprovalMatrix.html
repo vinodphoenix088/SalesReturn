@@ -1,0 +1,180 @@
+﻿<style>
+    div.scrollmenu {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            div.scrollmenu a:hover {
+                background-color: #777;
+            }
+
+    th {
+        text-align: center;
+    }
+
+    .table > thead > tr > th {
+        vertical-align: top;
+    }
+</style>
+
+
+    <div class="col-md-12  grids panel">
+        <!-- general form elements -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Approval Matrix</h3>
+                <button class="btn btn-primary btn-sm Button-class" ng-click="AddNewRow()">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+
+
+
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+                <div class="box-body ">
+                    <div>
+
+                        <div class="box-body table-responsive" style="    overflow: unset;">
+                            <div class="box scrollmenu">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <!--<th>S.No</th>-->
+                                            <th>Country</th>
+                                            <th>BU<br>
+                                                Type
+                                            </th>
+                                            <th>Division
+                                            </th>
+                                            <th>Request<br>
+                                                Type
+                                            </th>
+                                            <th>SRV<br>
+                                                Value
+                                            </th>
+                                            <th>Invoice<br>
+                                                Age
+                                            </th>
+                                            <th>Complaint
+                                                <br />
+                                                Handler
+                                            </th>
+                                            <th>Complaint
+                                                <br />
+                                                Manager
+                                            </th>
+                                            <th>Logistics
+                                                <br />
+                                                Manager
+                                            </th>
+                                            <th>Logistics 
+                                                <br />
+                                                Head
+                                            </th>
+                                            <th>Segment 
+                                                <br />
+                                                Head SRV
+                                            </th>
+                                            <th>Segment
+                                                <br />
+                                                Invoice Age
+                                            </th>
+                                            <!--   <th>Sales
+                                                <br />
+                                                Director/VP</th>
+                                            <th>President</th>-->
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="Obj in ApprovalMatrixTable">
+                                            <!--    <td>{{ $index + 1 }}
+
+                                            </td>-->
+                                            <td>
+                                                <select class="form-control" ng-model="Obj.Country" ng-options="pt.CountryName as pt.CountryName for pt in Obj.CountryList" ng-change="getBUForCountry(Obj.Country , Obj);"></select>
+                                            </td>
+                                            <td>
+                                                <select class="form-control" ng-model="Obj.BUType" ng-options="pt.BUName as pt.BUName  for pt in Obj.BUTypeList" ng-change="getDivisionForBU(Obj.BUType , Obj);"></select>
+                                            </td>
+
+                                            <td>
+
+                                                <select class="form-control" ng-model="Obj.Division" ng-options="pt.DivisionName as pt.DivisionName  for pt in Obj.DivisionList" ng-change="GetSalesDirector(Obj);"></select>
+                                            </td>
+                                            <td>
+
+                                                <select class="form-control" ng-model="Obj.RequestType" ng-options="pt.RequestType_Id as pt.RequestType  for pt in Obj.RequestTypeList"></select>
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.SRV_Value" numbers-only class="form-control" style="width: 80px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.InvoiceAge" numbers-only class="form-control" style="width: 80px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.ComplaintHandler" ng-disabled="Obj.RequestType != 1" class="form-control" style="width: 80px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.ComplaintManager" ng-disabled="Obj.RequestType != 1" class="form-control" style="width: 80px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.LogisticsManager" ng-disabled="Obj.RequestType != 2" class="form-control" style="width: 80px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.LogisticsHead" ng-disabled="Obj.RequestType != 2" class="form-control" style="width: 80px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.SegmentHeadHRV" ng-disabled="Obj.RequestType == 1 || Obj.RequestType == 2" numbers-only class="form-control" style="width: 80px;">
+                                            </td>
+                                            <td>
+                                                <input type="text" ng-model="Obj.SegmentInvoiceAge" ng-disabled="Obj.RequestType == 1 || Obj.RequestType == 2" numbers-only class="form-control" style="width: 80px;">
+                                            </td>
+                                            <!--    <td>
+                                              
+                                                <select class="form-control" ng-model="Obj.VPName" ng-options='pt.EmployeeCode as (pt.EmployeeCode + " : "  + pt.EmployeeName ) for pt in Obj.VPList'></select>
+
+                                            </td>-->
+                                            <!--    <td>
+                                                <input type="text" ng-model="Obj.President" class="form-control" style="width: 80px;">
+                                            </td>-->
+                                            <td>
+                                                <button class="btn btn-danger btn-sm" style="float: right" ng-click="RemoveRow(Obj.Matrix_Id , $index)">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" class="ng-isolate-scope"><!-- ngIf: 1 < pages.length || !autoHide --></dir-pagination-controls>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" ng-click="UpdateApprovalMatrix()" style="margin-left: 10px;">Update</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- /.box-body -->
+            </form>
+        </div>
+        <!-- /.box -->
+        <!-- Form Element sizes -->
+        <!-- /.box -->
+        <!-- /.box -->
+        <!-- Input addon -->
+        <!-- /.box -->
+
+    </div>

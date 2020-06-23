@@ -1,0 +1,95 @@
+﻿<style>
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    background-color: #777;
+}
+
+th {
+    text-align: center;
+}
+
+.table > thead > tr > th {
+    vertical-align: top;
+}
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div style="text-align:center;">
+                        <h3 class="box-title">Pending SRV Billing Closure</h3>
+                    </div><!--col end-->
+                    <div>
+                    </div><!--col end-->
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Quality</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+                            </div><!--col end-->
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>Reason</label>
+                                    <select class="form-control">
+                                        <option>Received Qty</option>
+                                        <option>Short Qty</option>
+                                        <option>Excess Qty</option>
+                                        <option>Damaged Qty</option>
+                                    </select>
+                                </div>
+                            </div><!--col end-->
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>GST Invoice Number</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+                            </div><!--col end-->
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>SRV DO Number</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+                            </div><!--col end-->
+                        </div><!--rwo end-->
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>SRV Invoice Number</label>
+                                    <input type="text" class="form-control" placeholder="Enter ...">
+                                </div>
+                            </div><!--col end-->
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>SAP Reason(Remarks)</label>
+                                    <textarea class="form-control" placeholder="Enter ..."></textarea>
+                                </div>
+                            </div><!--col end-->
+                        </div><!--rwo end-->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button class="btn btn-primary btn-xs pull-right" style="margin-left: 10px;">Submit</button>
+                    </div><!--footer-->
+                </form>
+            </div><!--primary-->
+        </div><!--cole dn-->
+    </div><!--row end-->
+</section>

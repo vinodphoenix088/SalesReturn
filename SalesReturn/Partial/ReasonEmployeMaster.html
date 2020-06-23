@@ -1,0 +1,142 @@
+﻿<style>
+    div.scrollmenu {
+        overflow: auto;
+        white-space: nowrap;
+    }
+
+        div.scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            div.scrollmenu a:hover {
+                background-color: #777;
+            }
+
+    th {
+        text-align: center;
+    }
+
+    .table > thead > tr > th {
+        vertical-align: top;
+    }
+
+    .box.box-primary {
+        border-top-color: #14448a;
+    }
+
+    thead {
+        white-space: nowrap;
+        padding: 15px !important;
+        background: #14448a;
+        color: white;
+    }
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+
+
+                    <div style="text-align:center;">
+                        <h3 class="box-title">Employee Master</h3>
+                        <button class="btn btn-primary btn-xs pull-right" ng-click="AddNewRow()">+</button>
+                    </div><!--col end-->
+
+                    <div>
+
+
+
+                    </div><!--col end-->
+
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="table-responsive">
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="white-space:nowrap;">Depot Name</th>
+                                        <th scope="col" style="white-space:nowrap;">Depot Person Code</th>
+                                        <th scope="col" style="white-space:nowrap;">Commercial</th>
+                                        <th scope="col" style="white-space:nowrap;">Commercial Head</th>
+                                        <th style="white-space:nowrap;">CSO Code</th>
+                                        <th scope="col" style="white-space:nowrap;">Customer Complaint Handler</th>
+                                        <th style="white-space:nowrap;">Customer Complaint Manager</th>
+                                        <th style="white-space:nowrap;">Logistic Manager</th>
+                                        <th style="white-space:nowrap;">ISC</th>
+                                        <th style="white-space:nowrap;">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="Obj in EmployeeList">
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="form-group" style="width:141px;">
+                                              
+                                                <select class="form-control" ng-model="Obj.DepotName" ng-change="getDepotPerson(Obj.DepotId)"
+                                                        ng-options="pt.DepotName as pt.DepotName for pt in DepotList"></select>
+                                            </div>
+                                        </td>
+                                        <td>
+
+                                            <input type="text" class="form-control" ng-model="Obj.Depotcode" placeholder="Enter ...">
+
+                                        </td>
+                                        <td>
+
+
+                                            <input type="text" class="form-control" ng-model="Obj.CommercialCode" placeholder="Enter ...">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="Obj.CommercialHead" placeholder="Enter ...">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" class="form-control" ng-model="Obj.CSO" placeholder="Enter ...">
+
+                                        </td>
+                                        <td>
+                                            <select class="form-control" ng-model="Obj.ComplaintHandler"
+                                                    ng-options="pt.ComplaintHandler as pt.ComplaintHandler for pt in CCStackHolders"></select>
+                                        </td>
+
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="form-group" style="width:141px;">
+
+                                                    <select class="form-control" ng-model="Obj.ComplaintManager"
+                                                            ng-options="pt.ComplaintManager as pt.ComplaintManager for pt in CCStackHolders"></select>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"  ng-model="Obj.LogisticsHead" placeholder="Enter ...">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control"  ng-model="Obj.ISC" placeholder="Enter ...">
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary btn-xs btn-warning" ng-click="RemoveRow(Obj.Id, $index)">-</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><!--responsive-->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button class="btn btn-primary btn-xs pull-right" ng-click="UpdateEmployeeList(EmployeeList)" style="margin-left: 10px;">Submit</button>
+
+                    </div><!--footer-->
+                </form>
+            </div><!--primary-->
+        </div><!--cole dn-->
+    </div><!--row end-->
+</section>

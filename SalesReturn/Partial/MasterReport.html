@@ -1,0 +1,181 @@
+﻿
+<style>
+    .box.box-primary {
+        border-top-color: #14448a;
+    }
+
+    thead {
+        white-space: nowrap;
+        padding: 15px !important;
+        background: #14448a;
+        color: white;
+    }
+    </style>
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+        
+            <div class="box box-primary">
+                
+                <div class="box-header with-border">
+                    <h3 class="box-title">Master Report</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col col-md-3">
+                                <label>From Date</label>
+                                <datepicker date-max-limit="{{TodayDate.toString()}}"
+                                            date-format="dd MMM yyyy"
+                                            button-prev="<i class='fa fa-arrow-left'></i>"
+                                            button-next="<i class='fa fa-arrow-right'></i>">
+                                    <input readonly class="form-control" placeholder="From date.." ng-model="FromDate" type="text" />
+                                </datepicker>
+                            </div>
+                            <div class="col col-md-3">
+                                <label>To Date</label>
+                                <datepicker date-max-limit="{{TodayDate.toString()}}" date-min-limit="{{FromDate.toString()}}"
+                                            date-format="dd MMM yyyy"
+                                            button-prev="<i class='fa fa-arrow-left'></i>"
+                                            button-next="<i class='fa fa-arrow-right'></i>">
+                                    <input readonly class="form-control" placeholder="To date.." ng-model="ToDate" type="text" />
+                                </datepicker>
+                            </div>
+                            <div class="col col-md-4">
+                                <button class="btn btn-primary btn-sm" style="margin-top: 27px;" ng-click="GetReport()">Go</button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="table-responsive" ng-show="ShowReport==true">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center">
+                                            Sr. No
+                                        </th>
+                                        <th style="text-align:center">
+                                            SRV Request Nos.
+                                        </th>
+                                        <th >
+                                            Parent 
+                                            SRV Request 
+                                            Nos.
+                                        </th>
+                                        <th style="text-align:center">SRV Request Date</th>
+                                        <th style="text-align:center">Request raised by</th>
+                                        <th style="text-align:center">
+                                            Depot Code
+                                        </th>
+                                        <th style="text-align:center">
+                                            Depot Name
+                                        </th>
+                                        <th style="text-align:center">
+                                            Customer Code
+                                        </th>
+                                        <th style="text-align:center">
+                                            Customer Name
+                                        </th>
+                                        <th  style="text-align:center">
+                                            Raised by Sales
+                                        </th>
+                                        <th style="text-align:center">
+                                            SKU Code
+                                        </th>
+                                        <th style="text-align:center">Batch</th>
+                                        <th style="text-align:center">Mfg Date</th>
+                                        <th style="text-align:center">Shelf life (In Days)</th>
+                                        <th style="text-align:center">SRV Qty</th>
+                                        <th style="text-align:center">SRV Volume</th>
+                                        <th style="text-align:center">SRV Value (In INR)</th>
+                                        <th style="text-align:center">Ref Inv No#</th>
+                                        <th style="text-align:center">Ref Inv Date</th>
+                                        <th style="text-align:center">Primary SRV Reason<br /> (Input by Sales Team)</th>
+                                        <th style="text-align:center">Request Status</th>
+                                        <th style="text-align:center">Approved/Rejected By</th>
+                                        <th style="text-align:center">Approved/ Rejected Date</th>
+                                        <th style="text-align:center">Approving Authority Remarks</th>
+                                        <th style="text-align:center">Date of Materials Receipt in Warehouse</th>
+                                        <th style="text-align:center">Received Qty</th>
+                                        <th style="text-align:center">SAP Reason Code (Input by CSO)</th>
+                                        <th style="text-align:center">SAP Reason Desc.</th>
+                                        <th style="text-align:center">OBD Number</th>
+                                        <th style="text-align:center">OBD Date</th>
+                                        <th style="text-align:center">OBD Relased Date</th>
+                                        <th style="text-align:center">Req Closure Date</th>
+                                        <th style="text-align:center">SAP Ref SRV Inv #</th>
+                                        <th style="text-align:center">SAP Ref SRV Inv Date</th>
+                                        <th style="text-align:center">Segment</th>
+                                        <th style="text-align:center">SO</th>
+                                        <th style="text-align:center">ASM</th>
+                                        <th style="text-align:center">RM</th>
+                                        <th style="text-align:center">Segment Head</th>
+
+
+                                    </tr>
+
+                                </thead>
+                                <tbody ng-repeat="item in ReprtData">
+                                    <tr style="text-align: center;">
+                                        <td> {{ $index + 1 }}</td>
+                                        <td> {{ item.SRV_Request_Nos_ }}</td>
+                                        <td> {{item.Parent_SRV_Request_Nos_}}</td>
+                                        <td> {{ item.SRV_Request_Date |date: 'dd-MMM-yyyy'}}</td>
+                                        <td> {{ item.Request_Raised_By }}</td>
+                                        <td> {{ item.Depot_Code }}</td>
+                                        <td> {{ item.Depot_Name }}</td>
+                                        <td> {{ item.Customer_Code }}</td>
+                                        <td> {{ item.Customer_Name }}</td>
+                                        <td> </td>
+                                        <td> {{ item.SKU_Code }}</td>
+                                        <td> {{ item.Batch }}</td>
+                                        <td> {{ item.Manufacturing_Date |date: 'dd-MMM-yyyy'}}</td>
+                                        <td> {{ item.Shelf_Liife }}</td>
+                                        <td> {{ item.SRV_Quantity }}</td>
+                                        <td> {{ item.Volume }}</td>
+                                        <td> {{ item.SRV_Value }}</td>
+                                        <td> {{ item.Ref_Invoice_Number }}</td>
+                                        <td> {{ item.Ref_Invoice_Date|date: 'dd-MMM-yyyy' }}</td>
+                                        <td> {{ item.Primary_SRV_Reason }}</td>
+                                        <td> {{ item.Status }}</td>
+                                        <td> {{ item.Modified_By }}</td>
+                                        <td> {{ item.Modified_Date|date: 'dd-MMM-yyyy' }}</td>
+                                        <td> {{ item.Remarks }}</td>
+                                        <td> </td>
+                                        <td> {{ item.Received_Quantity }}</td>
+                                        <td> {{ item.SAP_Reason_Code }}</td>
+                                        <td> {{ item.SAP_Reason_Desc_ }}</td>
+                                        <td> {{ item.OBD_Number }}</td>
+                                        <td> {{ item.OBD_Date |date: 'dd-MMM-yyyy'}}</td>
+                                        <td> {{ item.OBD_Relased_Date |date: 'dd-MMM-yyyy'}}</td>
+                                        <td> {{ item.Req_Closure_Date |date: 'dd-MMM-yyyy'}}</td>
+                                        <td> {{ item.SAP_Ref_SRV_Inv__ }}</td>
+                                        <td> {{ item.SAP_Ref_SRV_Inv_Date |date: 'dd-MMM-yyyy'}}</td>
+                                        <td> {{ item.Segement }}</td>
+                                        <td> {{ item.SO_Name }}</td>
+                                        <td> {{ item.ASM }}</td>
+                                        <td> {{ item.RM }}</td>
+                                        <td> {{ item.Segment_Head }}</td>
+
+
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+
+
+                </form>
+            </div>
+                <!-- /.box -->
+            </div><!--col end-->
+    </div><!--row end-->
+</section>

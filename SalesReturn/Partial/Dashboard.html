@@ -1,0 +1,191 @@
+﻿<aside class="right-side">
+
+    <section class="content-header" style="text-align: center; background: #fbfbfb;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);height: 53px;
+">
+        <h1 style="font-weight: bold; font-size: 20px !important;">
+            Dashboard
+
+        </h1>
+
+    </section>
+    <section class="content">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-4 col-xs-6 col-sm-4">
+                <!-- small box -->
+                <div class="small-box bg-teal" style="background-color: #00c0ef !important;">
+                    <div class="inner">
+                        <table>
+                            <tr><td><h3>{{TotalCount}}</h3></td></tr>
+                            <tr><td><p>Total Request </p></td></tr>
+                            <tr style="font-size:12px"><td>Raised By Depot : {{TotalCount-SalesReqCount}} </td><td style="padding-left: 10px;">Raised By Sales : {{SalesReqCount}}</td></tr>
+                        </table>
+                    </div>
+                    <div class="icon" style="font-size:75px;color: #ffffff9e;">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <!--<a href="#/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>-->
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-xs-6 col-sm-4">
+                <!-- small box -->
+                <div class="small-box bg-blue">
+                    <!--<table>
+        <tr>
+            <td>
+                <div class="inner">
+                    <h3>{{PendingRequestCount}}<sup style="font-size: 20px"></sup></h3>
+                    <p style="padding-bottom: 17px;">Pending Request</p>
+                </div>
+                <div class="icon" style="font-size:75px;    color: #ffffff9e;">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+
+            </td>
+            <td>
+                <div class="inner">
+                    <h3>{{PendingBillingRequestCount}}</h3>
+                    <p style="padding-bottom: 17px;">Pending Billing Closure Request</p>
+                </div>
+                <div class="icon" style="font-size:75px;    color: #ffffff9e;">
+                    <i class="ion ion-ios-filing"></i>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <a href="#/PendingRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </td>
+            <td>
+                <a href="#/PBC" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </td>
+        </tr>
+    </table>-->
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <table>
+                                <tr><td><h3>{{PendingRequestCount+PendingBillingRequestCount}}</h3></td></tr>
+                                <tr><td><p>Total Pending Request </p></td></tr>
+                                <tr style="font-size:12px"><td>Pending request : {{PendingRequestCount}} </td><td style="padding-left: 10px;">Pending Billing Closure : {{PendingBillingRequestCount}}</td></tr>
+                            </table>
+                        </div>
+                        <div class="icon" style="font-size:75px;color: #ffffff9e;">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <Div class="small-box-footer">
+                            <tr>
+                                <td style="margin-left: 12px;" ">
+                                    <a href="#/PendingRequest" style="color: white;">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </td>
+                                <td style="margin-left: 122px;" ">
+                                    <a href="#/PBC" style="color: white;">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                </td>
+                            </tr>
+                        </Div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-4 col-xs-6 col-sm-4">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>{{InprocessRequestCount}}<sup style="font-size: 20px"></sup></h3>
+                        <p style="padding-bottom: 17px;">InProcess Request</p>
+                    </div>
+                    <div class="icon" style="font-size:75px;    color: #ffffff9e;">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#/InprocessRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <!-- ./col -->
+        </div><!--row end-->
+        <div class="row">
+            <!-- ./col -->
+            <div class="col-lg-4 col-xs-6 col-sm-4">
+                <!-- small box -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                        <h3>{{ApprovedRequestCount}}</h3>
+                        <p style="padding-bottom: 17px;">Approved Request</p>
+                    </div>
+                    <div class="icon" style="font-size:75px;    color: #ffffff9e;">
+                        <i class="ion ion-checkmark"></i>
+                    </div>
+                    <a href="#/ApprovedRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-6 col-sm-4">
+                <!-- small box -->
+                <div class="small-box bg-red">
+                    <div class="inner">
+                        <h3>{{RejectRequestCount}}</h3>
+                        <p style="padding-bottom: 17px;">Rejected Request</p>
+                    </div>
+                    <div class="icon" style="font-size:75px;    color: #ffffff9e;">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#/RejectedRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+
+            <div class="col-lg-4 col-xs-6 col-sm-4">
+                <!-- small box -->
+                <div class="small-box bg-black">
+                    <div class="inner">
+                        <h3>{{ClosedRequestCount}}</h3>
+                        <p style="padding-bottom: 17px;">Closed Request</p>
+                    </div>
+                    <div class="icon" style="font-size:75px;    color: #ffffff9e;">
+                        <i class="ion ion-cube"></i>
+                    </div>
+                    <a href="#/ClosedRequest" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-xs-6 col-sm-4" style="display:none;">
+                <!-- small box -->
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>{{PendingBillingRequestCount}}</h3>
+                        <p style="padding-bottom: 17px;">Pending Billing Closure Request</p>
+                    </div>
+                    <div class="icon" style="font-size:75px;    color: #ffffff9e;">
+                        <i class="ion ion-ios-filing"></i>
+                    </div>
+                    <a href="#/PBC" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-xs-6 col-sm-4" style="display:none;">
+                <!-- small box -->
+                <div class="small-box bg-olive-active">
+                    <div class="inner">
+                        <h3>{{PendingSRVBillingRequestCount}}</h3>
+                        <p style="padding-bottom: 17px;">Pending SRV Billing Closure Request</p>
+                    </div>
+                    <div class="icon" style="font-size:75px;    color: #ffffff9e;">
+                        <i class="ion ion-help-buoy"></i>
+                    </div>
+                    <a href="#/srrp" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+</aside>
